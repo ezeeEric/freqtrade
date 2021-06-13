@@ -256,7 +256,7 @@ class Hyperopt:
         """
         params_dict = self._get_params_dict(raw_params)
         params_details = self._get_params_details(params_dict)
-
+        print(params_dict)
         if self.has_space('roi'):
             self.backtesting.strategy.minimal_roi = (  # type: ignore
                 self.custom_hyperopt.generate_roi_table(params_dict))
@@ -368,6 +368,10 @@ class Hyperopt:
         )
 
     def run_optimizer_parallel(self, parallel, asked, i) -> List:
+        print(asked)
+        print(parallel)
+        print(i)
+        exit()
         return parallel(delayed(
                         wrap_non_picklable_objects(self.generate_optimizer))(v, i) for v in asked)
 
